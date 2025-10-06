@@ -9,15 +9,15 @@ class Producto extends Model
 {
     use HasFactory;
 
-    // Nombre de la tabla (opcional si la tabla se llama 'productos')
     protected $table = 'productos';
 
-    // Campos que se pueden llenar de forma masiva
     protected $fillable = [
         'nombre',
+        'codigo',
         'descripcion',
         'cantidad',
         'precio',
     ];
 }
+
 

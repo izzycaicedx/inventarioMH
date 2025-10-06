@@ -2,63 +2,94 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar todos los productos con filtro de búsqueda.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $busqueda = $request->get('busqueda');
+
+        $productos = Producto::where('nombre', 'like', "%$busqueda%")
+            ->orWhere('descripcion', 'like', "%$busqueda%")
+            ->paginate(10);
+
+        return view('productos.index', compact('productos', 'busqueda'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar formulario para crear un producto nuevo.
      */
     public function create()
     {
-        //
+        return view('productos.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar un nuevo producto en la base de datos.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'cantidad' => 'required|integer|min:0',
+            'precio' => 'required|numeric|min:0',
+        ]);
+
+        Producto::create($request->all());
+
+        return redirect()->route('productos.index')->with('success', 'Producto creado correctamente.');
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar un producto específico.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+        return view('productos.show', compact('producto'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar formulario para editar un producto.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+        return view('productos.edit', compact('producto'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar un producto existente.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'cantidad' => 'required|integer|min:0',
+            'precio' => 'required|numeric|min:0',
+        ]);
+
+        $producto = Producto::findOrFail($id);
+        $producto->update($request->all());
+
+        return redirect()->route('productos.index')->with('success', 'Producto actualizado correctamente.');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar un producto de la base de datos.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+        $producto->delete();
+
+        return redirect()->route('productos.index')->with('success', 'Producto eliminado correctamente.');
     }
 }
