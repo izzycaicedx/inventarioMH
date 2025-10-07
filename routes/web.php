@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\EmpleadoController; // 👈 NECESARIO: Importar el controlador de Empleados
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,8 +21,11 @@ Route::middleware('auth')->group(function () {
     // CRUD productos
     Route::resource('productos', ProductoController::class);
 
-    // Exportar PDF con filtros
+    // Exportar PDF con filtros (ruta específica)
     Route::get('/productos/exportar/pdf', [ProductoController::class, 'exportarPDF'])->name('productos.pdf');
+    
+    // CRUD Empleados (Esto crea la ruta 'empleados.index')
+    Route::resource('empleados', EmpleadoController::class);
 });
 
 require __DIR__.'/auth.php';
