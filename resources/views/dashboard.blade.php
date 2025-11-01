@@ -74,7 +74,7 @@
 
     <div class="row g-4">
         <!-- Productos -->
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card text-center p-4">
                 <i class="bi bi-box-seam mb-3"></i>
                 <h5 class="card-title">Gestión de Productos</h5>
@@ -84,7 +84,7 @@
         </div>
 
         <!-- Empleados -->
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card text-center p-4">
                 <i class="bi bi-people mb-3"></i>
                 <h5 class="card-title">Gestión de Empleados</h5>
@@ -93,8 +93,18 @@
             </div>
         </div>
 
+        <!-- Ventas -->
+        <div class="col-md-3">
+            <div class="card text-center p-4">
+                <i class="bi bi-cash-stack mb-3"></i>
+                <h5 class="card-title">Gestión de Ventas</h5>
+                <p class="text-muted">Registra y consulta las ventas realizadas.</p>
+                <a href="{{ route('ventas.index') }}" class="btn btn-primary btn-custom">Ver Ventas</a>
+            </div>
+        </div>
+
         <!-- Reportes -->
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card text-center p-4">
                 <i class="bi bi-file-earmark-text mb-3"></i>
                 <h5 class="card-title">Reportes</h5>
