@@ -3,67 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MH DISTRIBUDOR</title>
+    <title>MH DISTRIBUIDOR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url('{{ asset('images/mh.png') }}');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('{{ asset('images/mh.png') }}');
             background-size: cover;
-            background-position: center; 
-            font-family: Arial, sans-serif;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: white;
+            color: #fff;
         }
 
         .container {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 40px;
-            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 50px 60px;
             text-align: center;
-        }
-
-        .company-summary h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .company-summary p {
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
             max-width: 600px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
+            animation: fadeIn 1s ease;
         }
 
-        .login-box a {
-            background-color: #007bff;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #eaeaea;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #007bff, #00a6ff);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 35px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 1.1rem;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
 
-        .login-box a:hover {
-            background-color: #0056b3;
+        .btn:hover {
+            background: linear-gradient(90deg, #0056b3, #007bff);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="company-summary">
-            <h1>Bienvenido a MH DISTRIBUDOR</h1>
-            <p>
-                El éxito de nuestra empresa y la tranquilidad de nuestros clientes dependen 
-                de tu atención al detalle. Con cada registro que haces, estás construyendo la base de nuestra confianza.
-            </p>
-        </div>
-        <div class="login-box">
-            <p>Para acceder al inventario.</p>
-            <a href="{{ route('login') }}">Iniciar Sesión</a>
-        </div>
+        <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="logo">
+        <h1>Bienvenido a MH DISTRIBUIDOR</h1>
+        <p>
+            El éxito de nuestra empresa y la tranquilidad de nuestros clientes dependen
+            de tu atención al detalle. Cada registro que haces fortalece la confianza en nuestro servicio.
+        </p>
+        <a href="{{ route('login') }}" class="btn">Iniciar Sesión</a>
     </div>
 </body>
 </html>
