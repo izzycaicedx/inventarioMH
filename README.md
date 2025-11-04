@@ -1,61 +1,110 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+INVENTARIOMH
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+InventarioMH es un sistema web desarrollado con Laravel para la gestión completa de inventarios, empleados y ventas.
+Permite registrar, consultar y administrar productos, controlar existencias y generar reportes de forma sencilla y eficiente.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+CARACTERÍSTICAS PRINCIPALES
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Gestión de productos: creación, edición, eliminación y control de stock.
+* Módulo de empleados: administración del personal con registro y foto de perfil.
+* Módulo de ventas: registro de ventas, detalle de productos vendidos y total calculado automáticamente.
+* Autenticación de usuarios con roles y permisos.
+* Reportes PDF de productos, ventas o empleados.
+* Búsqueda y filtrado por nombre, categoría o fecha.
+* Interfaz moderna construida con Blade y Bootstrap/Tailwind.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+TECNOLOGÍAS UTILIZADAS
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Backend: Laravel 10+
+Frontend: Blade / Bootstrap / TailwindCSS
+Base de datos: MySQL o MariaDB
+Autenticación: Laravel Breeze / Auth
+Reportes: barryvdh/laravel-dompdf
+Control de versiones: Git / GitHub
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+REQUISITOS PREVIOS
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* PHP 8.1 o superior
+* Composer
+* MySQL o MariaDB
+* Node.js y NPM
+* Git
+* Opcional: XAMPP o Laravel Sail/Docker
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
+INSTALACIÓN
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Clona el repositorio
+   git clone [https://github.com/izzycaicedx/inventarioMH.git](https://github.com/izzycaicedx/inventarioMH.git)
+   cd inventarioMH
 
-## Code of Conduct
+2. Instala dependencias
+   composer install
+   npm install
+   npm run build
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. Copia el archivo de entorno y configura tu base de datos
+   cp .env.example .env
+   Edita el archivo .env con tus datos de conexión:
+   DB_DATABASE=inventario_mh
+   DB_USERNAME=root
+   DB_PASSWORD=
 
-## Security Vulnerabilities
+4. Genera la clave de la aplicación
+   php artisan key:generate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Ejecuta las migraciones y seeders
+   php artisan migrate --seed
 
-## License
+6. Inicia el servidor
+   php artisan serve
+   Luego abre en tu navegador: [http://localhost:8000](http://localhost:8000)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+ESTRUCTURA DEL PROYECTO
+
+app/
+├─ Http/
+│   ├─ Controllers/   -> Controladores de productos, empleados, ventas
+│   └─ Middleware/
+├─ Models/            -> Modelos Eloquent
+
+database/
+├─ migrations/        -> Migraciones de base de datos
+└─ seeders/           -> Datos iniciales
+
+resources/
+├─ views/             -> Vistas Blade
+├─ css/ y js/         -> Archivos de frontend
+
+routes/
+├─ web.php            -> Rutas principales
+└─ api.php            -> Rutas API
+
+
+
+PRÓXIMAS MEJORAS
+
+* Dashboard con estadísticas en tiempo real
+* Reportes personalizados filtrados por rango de fechas
+* Exportar inventario a Excel
+* Notificaciones de stock bajo
+* API REST para integración externa
+
+
+
+DESARROLLADO POR
+
+Izzy Caicedo
+Juan Pablo Urbano
+Seabstian Arias
+Correo: [izzycaicedx@ejemplo.com](mailto:izzycaicedx@ejemplo.com)
+Repositorio: [https://github.com/izzycaicedx/inventarioMH](https://github.com/izzycaicedx/inventarioMH)
+
+
