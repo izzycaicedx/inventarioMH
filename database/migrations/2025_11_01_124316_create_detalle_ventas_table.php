@@ -12,9 +12,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('venta_id');
             $table->unsignedBigInteger('producto_id');
-            $table->integer('cantidad');
+            $table->integer('cantidad')->default(1);
             $table->decimal('precio_unitario', 10, 2);
-            $table->decimal('subtotal', 10, 2);
             $table->timestamps();
 
             $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');

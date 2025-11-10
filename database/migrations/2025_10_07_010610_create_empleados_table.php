@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('cargo');
+            $table->string('telefono', 20)->nullable();
+            $table->string('foto_path')->nullable();
             $table->timestamps();
         });
     }

@@ -2,14 +2,12 @@
 
 @section('content')
 <style>
-    /* Fondo general */
     body {
         background: url("{{ asset('images/image.png') }}") center/cover no-repeat fixed;
         position: relative;
         min-height: 100vh;
     }
 
-    /* Capa blanca translúcida encima del fondo */
     body::before {
         content: "";
         position: absolute;
@@ -83,6 +81,16 @@
             </div>
         </div>
 
+        <!-- Inventario General -->
+        <div class="col-md-3">
+            <div class="card text-center p-4">
+                <i class="bi bi-archive mb-3" style="color: #198754;"></i>
+                <h5 class="card-title">Inventario General</h5>
+                <p class="text-muted">Consulta el estado actual de todos los productos.</p>
+                <a href="{{ route('productos.inventario') }}" class="btn btn-success btn-custom">Ver Inventario</a>
+            </div>
+        </div>
+
         <!-- Empleados -->
         <div class="col-md-3">
             <div class="card text-center p-4">
@@ -115,6 +123,5 @@
     </div>
 </div>
 
-<!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 @endsection
